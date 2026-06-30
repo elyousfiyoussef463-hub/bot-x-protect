@@ -1,0 +1,163 @@
+{
+    "global": {
+        "BOT_CREATOR": "Bot créé par Darkempire#8245",
+        "SUCCESS": "**SUCCÈS**",
+        "ERROR": "**ERREUR**",
+        "ERROR_OCCURED": "Une erreur a été rencontrée : `{0}`"
+    },
+    "events": {
+        "COMMAND_IN_COOLDOWN_DAY": "Cette commande est en cooldown, merci d'attendre encore {0} jour(s).",
+        "COMMAND_IN_COOLDOWN_HOUR": "Cette commande est en cooldown, merci d'attendre encore {0} heure(s).",
+        "COMMAND_IN_COOLDOWN_MINUTE": "Cette commande est en cooldown, merci d'attendre encore {0} minute(s).",
+        "COMMAND_IN_COOLDOWN_SECOND": "Cette commande est en cooldown, merci d'attendre encore {0} seconde(s).",
+        "BOT_MISSING_PERMISSIONS": "{0} J'ai besoin de la permission `{1}` pour exécuter cette commande.",
+        "MISSING_PERMISSIONS": "{0} Tu as besoin de la permission `{1}` pour exécuter cette commande.",
+        "MISSING_REQUIRED_ARGUMENT": "{0} Argument requis manquant !\nUtilise ce modèle : `{1}{2} {3}`"
+    },
+    "onJoin": {
+        "YOU_HAVE_BEEN_KICKED": "**TU AS ÉTÉ EXCLU DE {0}**",
+        "MEMBER_HAS_BEEN_KICKED": "**{0} a été exclu.**",
+        "MIN_ACCOUNT_AGE_KICK_REASON": "Raison : Ton compte est plus jeune que la limite du serveur ({0} heures).",
+        "HAS_BEEN_KICKED": "**{0} a été exclu.**",
+        "MIN_ACCOUNT_AGE_HAS_BEEN_KICKED_REASON": "**Raison :** Son compte est plus jeune que la limite du serveur ({0} heures)\nCréation du compte : {1}\n\n**__Informations de l'utilisateur :__**\n\n**Nom :** {2}\n**ID :** {3}",
+        "CAPTCHA_MESSAGE": "**TU DOIS PASSER LE CAPTCHA POUR ACCÉDER AU SERVEUR :**\nS'il te plaît {0}, entre le texte de l'image pour accéder au serveur (6 lettres majuscules).",
+        "MEMBER_PASSED_THE_CAPTCHA": "{0} a réussi le captcha.",
+        "USER_INFORMATIONS": "**__Informations de l'utilisateur :__**\n\n**Nom :** {0}\n**ID :** {1}",
+        "DATE": "le {0}",
+        "MEMBER_FAILED_THE_CAPTCHA": "{0} a échoué le captcha.",
+        "MEMBER_FAILED_THE_CAPTCHA_REASON": "Raison : tu as échoué le captcha.\nLien du serveur : <{0}>",
+        "MEMBER_FAILED_THE_CAPTCHA_REASON_LOG": "**Raison :** il a échoué le captcha.\n\n**__Informations de l'utilisateur :__**\n\n**Nom :** {0}\n**ID :** {1}",
+        "TIME_IS_OUT": "**TEMPS ÉCOULÉ**",
+        "USER_HAS_EXCEEDED_THE_RESPONSE_TIME_REASON": "Raison : Tu as dépassé la limite de temps du captcha (120s).\nLien du serveur : <{0}>",
+        "USER_HAS_EXCEEDED_THE_RESPONSE_TIME": "{0} a dépassé la limite de temps (120s).",
+        "USER_HAS_EXCEEDED_THE_RESPONSE_TIME_LOG": "**Raison :** Il a dépassé la limite de temps du captcha (120s).\n\n**__Informations de l'utilisateur :__**\n\n**Nom :** {0}\n**ID :** {1}"
+    },
+    "onMessage": {
+        "USER_HAS_SENT_NUDITY": "**{0} a envoyé une image inappropriée.**",
+        "USER_HAS_SENT_NUDITY_DESCRIPTION": "Dans {0}.\n\n**__Informations de l'utilisateur :__**\n\n**Nom :** {1}\n**ID :** {2}\n\n**L'image :**",
+        "DO_NOT_SEND_NUDITY": "{0} n'envoie pas d'images inappropriées !",
+        "DO_NOT_INSULT": "{0} N'insulte pas les autres !",
+        "USER_HAS_SENT_PROFANITY": "**{0} a envoyé un message avec des insultes.**",
+        "USER_HAS_SENT_PROFANITY_DESCRIPTION": "Dans {0}.\n\n**__Informations de l'utilisateur :__**\n\n**Nom :** {1}\n**ID :** {2}\n\n**Le message :**\n\n{3}",
+        "STOP_SPAM": "{0} Arrête de spammer s'il te plaît !",
+        "YOU_HAVE_BEEN_KICKED": "**TU AS ÉTÉ EXCLU DE {0}**",
+        "MEMBER_HAS_BEEN_KICKED": "**{0} a été exclu.**",
+        "YOU_HAVE_BEEN_KICKED_SPAM_REASON": "Raison : Tu as spammé.",
+        "USER_HAS_BEEN_KICKED_FOR_SPAMMING": "{0} a été exclu pour spam !",
+        "USER_HAS_BEEN_KICKED_FOR_SPAMMING_LOG": "**Raison :** Il a spammé dans {0}.\n\n**__Informations de l'utilisateur :__**\n\n**Nom :** {1}\n**ID :** {2}\n\n**Logs :** {3}"
+    },
+    "userinfos": {
+        "USER_INFORMATIONS": "__**{0} informations :**__",
+        "MEMBER_ID": "**ID du membre :**",
+        "ACCOUNT_CREATION": "**Création du compte :**",
+        "JOINED_AT": "**Rejoint le :**",
+        "MEMBER_NOT_FOUND": "Membre non trouvé !"
+    },
+    "lock": {
+        "LOCKED_WITH_SUCCESS": "#{0} verrouillé avec succès !",
+        "CHANNEL_NOT_FOUND": "Salon non trouvé !"
+    },
+    "unlock": {
+        "UNLOCKED_WITH_SUCCESS": "#{0} déverrouillé avec succès !",
+        "CHANNEL_NOT_FOUND": "Salon non trouvé !"
+    },
+    "changeprefix": {
+        "NEW_PREFIX": "Nouveau préfixe : `{0}`"
+    },
+    "changelanguage": {
+        "NEW_LANGUAGE": "Nouvelle langue : `{0}`",
+        "INVALID_LANGUAGE_SELECTED": "Langue invalide.\nChoisis une langue dans cette liste : {0}"
+    },
+    "profanity": {
+        "ANTI_PROFANITY_ENABLED": "**ANTI PROFANITÉ ACTIVÉ**",
+        "ANTI_PROFANITY_ENABLED_DESCRIPTION": "L'anti-profanité a été activé.",
+        "ANTI_PROFANITY_DISABLED": "**ANTI PROFANITÉ DÉSACTIVÉ**",
+        "ANTI_PROFANITY_DISABLED_DESCRIPTION": "L'anti-profanité a été désactivé."
+    },
+    "antinudity": {
+        "ANTI_NUDITY_ENABLED": "**ANTI NUDITÉ ACTIVÉ**",
+        "ANTI_NUDITY_ENABLED_DESCRIPTION": "L'anti-nudité a été activé.",
+        "ANTI_NUDITY_DISABLED": "**ANTI NUDITÉ DÉSACTIVÉ**",
+        "ANTI_NUDITY_DISABLED_DESCRIPTION": "L'anti-nudité a été désactivé."
+    },
+    "antiSpam": {
+        "ANTI_SPAM_ENABLED": "**ANTI SPAM ACTIVÉ**",
+        "ANTI_SPAM_ENABLED_DESCRIPTION": "L'anti-spam a été activé.",
+        "ANTI_SPAM_DISABLED": "**ANTI SPAM DÉSACTIVÉ**",
+        "ANTI_SPAM_DISABLED_DESCRIPTION": "L'anti-spam a été désactivé."
+    },
+    "allowSpam": {
+        "CHANNEL_ALREADY_IGNORED_BY_ANTI_SPAM": "Le salon est déjà ignoré par l'anti-spam.",
+        "CHANNEL_IGNORED_BY_ANTI_SPAM": "Le salon <#{0}> est ignoré par l'anti-spam.",
+        "INVALID_CHANNEL_ENABLE": "Le salon doit être un salon textuel.\nSuis ce modèle : `{0}allowspam <#salon>`",
+        "ANTI_SPAM_ALREADY_DISABLED": "Le salon n'est pas ignoré par l'anti-spam.",
+        "CHANNEL_NOT_IGNORED_BY_ANTI_SPAM": "Le salon <#{0}> n'est pas ignoré par l'anti-spam.",
+        "INVALID_CHANNEL_DISABLE": "Le salon doit être un salon textuel.\nSuis ce modèle : `{0}allowspam <#salon> remove`"
+    },
+    "giveRoleAfterCaptcha": {
+        "ROLE_GIVEN_AFTER_CAPTCHA": "<@&{0}> sera donné après le captcha.",
+        "INVALID_ARGUMENT": "Tu dois écrire on ou off !\nSuis ce modèle : `{0}giveroleaftercaptcha <ID du rôle/off>`"
+    },
+    "logs": {
+        "LOG_CHANNEL_ENABLED": "**SALON DE LOGS ACTIVÉ**",
+        "LOG_CHANNEL_ENABLED_DESCRIPTION": "Le salon de logs a été activé.",
+        "LOG_CHANNEL_DISABLED": "**SALON DE LOGS DÉSACTIVÉ**",
+        "LOG_CHANNEL_DISABLED_DESCRIPTION": "Le salon de logs a été désactivé."
+    },
+    "minAccountAge": {
+        "MINIMUM_ACCOUNT_AGE_ENABLED": "**ÂGE MINIMUM DU COMPTE ACTIVÉ**",
+        "MINIMUM_ACCOUNT_AGE_ENABLED_DESCRIPTION": "L'âge minimum du compte a été mis à jour.",
+        "MINIMUM_ACCOUNT_AGE_DISABLED": "**ÂGE MINIMUM DU COMPTE DÉSACTIVÉ**",
+        "MINIMUM_ACCOUNT_AGE_DISABLED_DESCRIPTION": "L'âge minimum du compte a été désactivé.",
+        "INVALID_ARGUMENT": "L'âge minimum doit être un nombre (défaut : 24 heures).\nSuis ce modèle : `{0}minaccountage <nombre (heures)>`"
+    },
+    "moderation": {
+        "YOU_HAVE_BEEN_KICKED": "**TU AS ÉTÉ EXCLU DE {0}**",
+        "KICK_REASON": "Raison : `{0}`",
+        "HAS_BEEN_KICKED_WITH_REASON": "{0} a été exclu avec la raison : `{1}` 🔨",
+        "HAS_BEEN_KICKED_WITHOUT_REASON": "{0} a été exclu sans raison 🔨",
+        "YOU_HAVE_BEEN_BANNED": "**TU AS ÉTÉ BANNI DE {0}**",
+        "BAN_REASON": "Raison : `{0}`",
+        "HAS_BEEN_BANNED_WITH_REASON": "{0} a été banni avec la raison : `{1}` 🔨",
+        "HAS_BEEN_BANNED_WITHOUT_REASON": "{0} a été banni sans raison 🔨",
+        "MEMBER_NOT_FOUND": "Membre introuvable !"
+    },
+    "settings": {
+        "SERVER_SETTINGS": "**PARAMÈTRES DU SERVEUR**",
+        "CAPTCHA_PROTECTION": "**PROTECTION CAPTCHA** - `({0}setup <on/off>)`",
+        "CAPTCHA_PROTECTION_DESCRIPTION": "Captcha activé : **{0}**\nSalon captcha : {1}\nLogs : {2}\nRôle temporaire : <@&{3}>",
+        "ROLE_GIVEN_AFTER_CAPTCHA": "**RÔLE APRÈS CAPTCHA** - `({0}giveroleaftercaptcha <ID/off>)`",
+        "ROLE_GIVEN_AFTER_CAPTCHA_DESCRIPTION": "Rôle après captcha : **{0}**",
+        "MINIMUM_ACCOUNT_AGE": "**ÂGE MINIMUM DU COMPTE** - `({0}minaccountage <nombre>)`",
+        "MINIMUM_ACCOUNT_AGE_DESCRIPTION": "Âge minimum : **{0} heures**",
+        "ANTI_SPAM": "**ANTI SPAM** - `({0}antispam <true/false>)`",
+        "ANTI_SPAM_DESCRIPTION": "Anti-spam activé : **{0}**",
+        "ALLOW_SPAM": "**AUTORISER SPAM** - `({0}allowspam <#salon> (remove))`",
+        "ALLOW_SPAM_DESCRIPTION": "Salons ignorés : **{0}**",
+        "ANTI_NUDITY": "**ANTI NUDITÉ** - `({0}antinudity <true/false>)`",
+        "ANTI_NUDITY_DESCRIPTION": "Anti-nudité activé : **{0}**",
+        "ANTI_PROFANITY": "**ANTI PROFANITÉ** - `({0}antiprofanity <true/false>)`",
+        "ANTI_PROFANITY_DESCRIPTION": "Anti-profanité activé : **{0}**",
+        "DISABLED": "Désactivé"
+    },
+    "antilink": {
+        "NO_DISCORD_INVITES": "{0}, les invitations Discord sont interdites.",
+        "NO_LINKS": "{0}, les liens sont interdits."
+    },
+    "setup": {
+        "DO_YOU_WANT_TO_SET_UP_THE_CAPTCHA_PROTECTION": "**CONFIRMATION ACTIVATION CAPTCHA**",
+        "DO_YOU_WANT_TO_SET_UP_THE_CAPTCHA_PROTECTION_DESCRIPTION": "**L'activation du captcha inclut :**\n\n- Salon de vérification\n- Salon de logs\n- Rôle temporaire\n\n**Écris \"__yes__\" pour confirmer ou \"__no__\" pour annuler.**",
+        "SET_UP_ABANDONED": "Configuration du captcha annulée.",
+        "CREATION_OF_CAPTCHA_PRETECTION": "Mise en place du captcha...",
+        "CAPTCHA_WAS_SET_UP_WITH_SUCCESS": "**CAPTCHA ACTIVÉ AVEC SUCCÈS**",
+        "CAPTCHA_WAS_SET_UP_WITH_SUCCESS_DESCRIPTION": "Le captcha a été activé avec succès.",
+        "TIME_IS_OUT": "**TEMPS ÉCOULÉ**",
+        "USER_HAS_EXCEEDED_THE_RESPONSE_TIME": "{0} a dépassé le temps limite (30s).",
+        "DELETION_OF_THE_CAPTCHA_PROETECTION": "Suppression du captcha...",
+        "CAPTCHA_WAS_DELETED_WITH_SUCCESS": "**CAPTCHA SUPPRIMÉ AVEC SUCCÈS**",
+        "CAPTCHA_WAS_DELETED_WITH_SUCCESS_DESCRIPTION": "Le captcha a été supprimé avec succès.",
+        "CAPTCHA_DELETION_ERROR": "**ERREUR DE SUPPRESSION**",
+        "CAPTCHA_DELETION_ERROR_DESCRIPTION": "**Erreur(s) lors de la suppression :** `{0}`.",
+        "INVALID_ARGUMENT": "Doit être on ou off.\nSuis ce modèle : `{prefix}setup <on/off>`"
+    }
+}

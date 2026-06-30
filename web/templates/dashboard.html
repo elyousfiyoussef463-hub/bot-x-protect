@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[+] EMPIRE-X | PROTECT - {{ guild.name }}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #0d0d15;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .header {
+            background: #1a1a2e;
+            border-bottom: 1px solid #2a2a4a;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .header h1 {
+            color: #f0c050;
+            font-size: 20px;
+        }
+        .header .guild-name {
+            color: #aaaacc;
+            font-size: 14px;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .user-info img { width: 32px; height: 32px; border-radius: 50%; }
+        .logout { color: #ff6b6b; text-decoration: none; font-size: 13px; }
+        .container { max-width: 1200px; margin: 24px auto; padding: 0 20px; }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .stat-card {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .stat-value { font-size: 28px; font-weight: 700; color: #f0c050; }
+        .stat-label { font-size: 12px; color: #8888aa; margin-top: 4px; }
+
+        .section { margin-bottom: 28px; }
+        .section h3 { color: #f0c050; font-size: 16px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #2a2a4a; }
+
+        .toggle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 10px;
+        }
+        .toggle-item {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .toggle-label { font-size: 13px; font-weight: 500; }
+        .toggle-status {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        .status-enabled { background: #1a3a1a; color: #2ecc71; border: 1px solid #2ecc71; }
+        .status-disabled { background: #3a1a1a; color: #e74c3c; border: 1px solid #e74c3c; }
+
+        .config-section {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .config-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #1f1f35;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .config-row:last-child { border-bottom: none; }
+        .config-label { font-size: 13px; color: #ccccee; }
+        .config-value { font-size: 13px; color: #f0c050; font-weight: 600; }
+        .config-select {
+            background: #252545;
+            color: #e0e0e0;
+            border: 1px solid #3a3a5a;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+        .config-input {
+            background: #252545;
+            color: #e0e0e0;
+            border: 1px solid #3a3a5a;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            width: 80px;
+        }
+        .btn-save {
+            background: #f0c050;
+            color: #0d0d15;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .btn-save:hover { background: #e0b040; }
+        .btn-toggle {
+            background: transparent;
+            border: 1px solid #3a3a5a;
+            color: #e0e0e0;
+            border-radius: 6px;
+            padding: 4px 12px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .btn-toggle:hover { border-color: #f0c050; color: #f0c050; }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2ecc71;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+            z-index: 999;
+        }
+        .toast.error { background: #e74c3c; }
+
+        .back-link {
+            color: #8888aa;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .back-link:hover { color: #f0c050; }
+
+        @media (max-width: 600px) {
+            .header { flex-direction: column; align-items: flex-start; }
+            .toggle-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <a href="/guilds" class="back-link">← Servers</a>
+            <h1>🛡️ {{ guild.name }}</h1>
+            <span class="guild-name">ID: {{ guild.id }}</span>
+        </div>
+        <div class="user-info">
+            <img src="https://cdn.discordapp.com/avatars/{{ user.id }}/{{ user.avatar }}.png" alt="">
+            <span>{{ user.username }}</span>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <div class="container">
+        <div class="stats-row" id="stats">
+            <div class="stat-card"><div class="stat-value">-</div><div class="stat-label">Members</div></div>
+            <div class="stat-card"><div class="stat-value">-</div><div class="stat-label">Channels</div></div>
+            <div class="stat-card"><div class="stat-value">-</div><div class="stat-label">Roles</div></div>
+            <div class="stat-card"><div class="stat-value">-</div><div class="stat-label">Verification</div></div>
+        </div>
+
+        <div class="section">
+            <h3>🔒 Ultra Protection</h3>
+            <div class="toggle-grid">
+                <div class="toggle-item">
+                    <span class="toggle-label">Bot Protection</span>
+                    <span class="toggle-status {{ 'status-enabled' if config.botProtection else 'status-disabled' }}" id="status-botProtection">
+                        {{ 'ENABLED' if config.botProtection else 'DISABLED' }}
+                    </span>
+                    <button class="btn-toggle" onclick="toggle('botProtection')">Toggle</button>
+                </div>
+                <div class="toggle-item">
+                    <span class="toggle-label">Staff Protection</span>
+                    <span class="toggle-status {{ 'status-enabled' if config.staffProtection else 'status-disabled' }}" id="status-staffProtection">
+                        {{ 'ENABLED' if config.staffProtection else 'DISABLED' }}
+                    </span>
+                    <button class="btn-toggle" onclick="toggle('staffProtection')">Toggle</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>🛡️ Anti-Nuke Protections</h3>
+            <div class="toggle-grid">
+                {% for key, label in [('nukeProtection', 'Channel Nuke'), ('roleNukeProtection', 'Role Nuke'), ('memberNukeProtection', 'Member Nuke'), ('webhookNukeProtection', 'Webhook Nuke'), ('emojiNukeProtection', 'Emoji Nuke'), ('stickerNukeProtection', 'Sticker Nuke')] %}
+                <div class="toggle-item">
+                    <span class="toggle-label">{{ label }}</span>
+                    <span class="toggle-status {{ 'status-enabled' if config.get(key) else 'status-disabled' }}" id="status-{{ key }}">
+                        {{ 'ENABLED' if config.get(key) else 'DISABLED' }}
+                    </span>
+                    <button class="btn-toggle" onclick="toggle('{{ key }}')">Toggle</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>⚙️ Filters</h3>
+            <div class="toggle-grid">
+                {% for key, label in [('antiProfanity', 'Profanity Filter'), ('antiNudity', 'Nudity Detection'), ('antiSpam', 'Spam Protection'), ('antiBot', 'Anti-Bot'), ('captcha', 'CAPTCHA'), ('antiRaid', 'Raid Detection')] %}
+                <div class="toggle-item">
+                    <span class="toggle-label">{{ label }}</span>
+                    <span class="toggle-status {{ 'status-enabled' if config.get(key) else 'status-disabled' }}" id="status-{{ key }}">
+                        {{ 'ENABLED' if config.get(key) else 'DISABLED' }}
+                    </span>
+                    <button class="btn-toggle" onclick="toggle('{{ key }}')">Toggle</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>⚙️ Configuration</h3>
+            <div class="config-section">
+                <div class="config-row">
+                    <span class="config-label">Prefix</span>
+                    <div>
+                        <input class="config-input" id="cfg-prefix" value="{{ config.prefix }}" style="width:60px;">
+                        <button class="btn-save" onclick="saveConfig({prefix: document.getElementById('cfg-prefix').value})">Save</button>
+                    </div>
+                </div>
+                <div class="config-row">
+                    <span class="config-label">Language</span>
+                    <select class="config-select" id="cfg-language">
+                        <option value="en-US" {{ 'selected' if config.language == 'en-US' }}>English</option>
+                        <option value="fr-FR" {{ 'selected' if config.language == 'fr-FR' }}>Français</option>
+                    </select>
+                    <button class="btn-save" onclick="saveConfig({language: document.getElementById('cfg-language').value})">Save</button>
+                </div>
+                <div class="config-row">
+                    <span class="config-label">Raid Level (1-4)</span>
+                    <div>
+                        <input class="config-input" id="cfg-raidLevel" value="{{ config.raidLevel or 1 }}" type="number" min="1" max="4" style="width:60px;">
+                        <button class="btn-save" onclick="saveConfig({raidLevel: parseInt(document.getElementById('cfg-raidLevel').value)})">Save</button>
+                    </div>
+                </div>
+                <div class="config-row">
+                    <span class="config-label">Min Account Age (seconds)</span>
+                    <div>
+                        <input class="config-input" id="cfg-minAccountDate" value="{{ config.minAccountDate or 86400 }}" type="number" style="width:100px;">
+                        <button class="btn-save" onclick="saveConfig({minAccountDate: parseInt(document.getElementById('cfg-minAccountDate').value)})">Save</button>
+                    </div>
+                </div>
+                <div class="config-row">
+                    <span class="config-label">Authorized Bot Role ID</span>
+                    <div>
+                        <input class="config-input" id="cfg-botProtectRole" value="{{ config.botProtectRole or '' }}" placeholder="Role ID" style="width:180px;">
+                        <button class="btn-save" onclick="saveConfig({botProtectRole: document.getElementById('cfg-botProtectRole').value || null})">Save</button>
+                    </div>
+                </div>
+                <div class="config-row">
+                    <span class="config-label">Dashboard Port</span>
+                    <div>
+                        <input class="config-input" id="cfg-dashboardPort" value="{{ config.dashboardPort or 5001 }}" type="number" style="width:80px;">
+                        <button class="btn-save" onclick="saveConfig({dashboardPort: parseInt(document.getElementById('cfg-dashboardPort').value)})">Save</button>
+                    </div>
+                </div>
+                <div class="config-row">
+                    <span class="config-label">Bot Command Prefix Hint</span>
+                    <span class="config-value">{{ prefix }}help</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;padding:24px;color:#555577;font-size:12px;">
+            [+] EMPIRE-X | PROTECT v1.0 — Made by Darkempire78
+        </div>
+    </div>
+
+    <script>
+        const guildId = '{{ guild.id }}';
+
+        function showToast(msg, isError = false) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.className = 'toast' + (isError ? ' error' : '');
+            t.style.display = 'block';
+            setTimeout(() => t.style.display = 'none', 3000);
+        }
+
+        async function toggle(key) {
+            try {
+                const resp = await fetch(`/api/${guildId}/toggle/${key}`, { method: 'POST' });
+                const data = await resp.json();
+                if (data.success) {
+                    const el = document.getElementById(`status-${key}`);
+                    const isOn = data[key];
+                    el.textContent = isOn ? 'ENABLED' : 'DISABLED';
+                    el.className = 'toggle-status ' + (isOn ? 'status-enabled' : 'status-disabled');
+                    showToast(`${key} ${isOn ? 'enabled' : 'disabled'}`);
+                } else {
+                    showToast('Error: ' + (data.error || 'Unknown'), true);
+                }
+            } catch (e) {
+                showToast('Network error', true);
+            }
+        }
+
+        async function saveConfig(data) {
+            try {
+                const resp = await fetch(`/api/${guildId}/config`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data),
+                });
+                const result = await resp.json();
+                if (result.success) {
+                    showToast('Configuration saved');
+                } else {
+                    showToast('Error: ' + (result.error || 'Unknown'), true);
+                }
+            } catch (e) {
+                showToast('Network error', true);
+            }
+        }
+
+        async function loadStats() {
+            try {
+                const resp = await fetch(`/api/${guildId}/stats`);
+                const data = await resp.json();
+                if (data.error) return;
+                const stats = document.getElementById('stats');
+                stats.innerHTML = `
+                    <div class="stat-card"><div class="stat-value">${data.member_count}</div><div class="stat-label">Members</div></div>
+                    <div class="stat-card"><div class="stat-value">${data.channels}</div><div class="stat-label">Channels</div></div>
+                    <div class="stat-card"><div class="stat-value">${data.roles}</div><div class="stat-label">Roles</div></div>
+                    <div class="stat-card"><div class="stat-value">${data.verification}</div><div class="stat-label">Verification</div></div>
+                `;
+            } catch (e) {}
+        }
+
+        loadStats();
+    </script>
+</body>
+</html>

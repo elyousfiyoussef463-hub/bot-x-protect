@@ -1,0 +1,43 @@
+import discord
+from discord.ext import commands
+from Tools.utils import getConfig, updateConfig
+from Tools.style import branded_embed
+
+class ChangeLanguageCog(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.command(
+        name="changelanguage",
+        aliases=["language"],
+        usage="<language>",
+        description="Change the bot's language.",
+    )
+    @commands.has_permissions(administrator=True)
+    @commands.cooldown(1, 3, commands.BucketType.member)
+    @commands.guild_only()
+    async def changelanguage(self, ctx, language):
+        availableLanguage = ["en-US", "fr-FR"]
+
+        if language not in availableLanguage:
+            embed = branded_embed(
+                description=self.bot.translate.msg(ctx.guild.id, "changelanguage", "INVALID_LANGUAGE_SELECTED").format(
+                    str(availableLanguage)
+                ),
+                color="error",
+            )
+            return await ctx.send(embed=embed)
+
+        data = getConfig(ctx.guild.id)
+        data["language"] = language
+        updateConfig(ctx.guild.id, data)
+
+        embed = branded_embed(
+            description=self.bot.translate.msg(ctx.guild.id, "changelanguage", "NEW_LANGUAGE").format(language),
+            color="success",
+        )
+        await ctx.send(embed=embed)
+
+
+async def setup(bot):
+    await bot.add_cog(ChangeLanguageCog(bot))

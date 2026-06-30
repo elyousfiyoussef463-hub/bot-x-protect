@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[+] EMPIRE-X | PROTECT - Select Server</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #0d0d15;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .header {
+            background: #1a1a2e;
+            border-bottom: 1px solid #2a2a4a;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header h1 {
+            color: #f0c050;
+            font-size: 20px;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .user-info img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+        .logout {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h2 { color: #f0c050; margin-bottom: 24px; }
+        .guild-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        .guild-card {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: #e0e0e0;
+            transition: border-color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .guild-card:hover {
+            border-color: #f0c050;
+            transform: translateY(-2px);
+        }
+        .guild-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #2a2a4a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .guild-icon img { width: 100%; height: 100%; }
+        .guild-name { font-weight: 600; font-size: 16px; }
+        .no-guilds { text-align: center; padding: 60px; color: #6666aa; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🛡️ [+] EMPIRE-X | PROTECT</h1>
+        <div class="user-info">
+            <img src="https://cdn.discordapp.com/avatars/{{ user.id }}/{{ user.avatar }}.png" alt="">
+            <span>{{ user.username }}</span>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Select a Server</h2>
+        {% if guilds %}
+        <div class="guild-grid">
+            {% for g in guilds %}
+            <a href="/dashboard/{{ g.id }}" class="guild-card">
+                <div class="guild-icon">
+                    {% if g.icon %}
+                    <img src="https://cdn.discordapp.com/icons/{{ g.id }}/{{ g.icon }}.png" alt="">
+                    {% else %}
+                    {{ g.name[0] | upper }}
+                    {% endif %}
+                </div>
+                <div>
+                    <div class="guild-name">{{ g.name }}</div>
+                    <div style="font-size:12px;color:#8888aa;">{{ g.id }}</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-guilds">
+            <p>You don't have admin access to any servers with [+] EMPIRE-X | PROTECT.</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

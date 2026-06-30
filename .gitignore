@@ -1,0 +1,13 @@
+﻿.venv-py311/
+.venv/
+.venv-1/
+venv/
+__pycache__/
+*.pyc
+node_modules/
+.env
+config.json
+backups/
+captchaFolder/
+*.log
+web/config_local.py

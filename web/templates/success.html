@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Succès - [+] EMPIRE-X | PROTECT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0d0d15;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            background: #16162a;
+            border: 1px solid #2a2a4a;
+            border-radius: 20px;
+            padding: 48px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+        }
+        .icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+        h1 { font-size: 28px; margin-bottom: 8px; }
+        p { color: #888; line-height: 1.6; margin-bottom: 24px; }
+        .btn {
+            background: #f0c050;
+            color: #0d0d15;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover { background: #d4a83a; }
+        .details {
+            background: #1e1e38;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0 24px;
+            font-size: 14px;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        {% if already_member %}
+        <div class="icon">👋</div>
+        <h1>Tu es déjà membre !</h1>
+        <p>Tu fais déjà partie du serveur [+] EMPIRE-X | PROTECT. Aucune action nécessaire.</p>
+        {% else %}
+        <div class="icon">✅</div>
+        <h1>Bienvenue !</h1>
+        <p>Tu as accepté les conditions et tu as rejoint le serveur <strong>[+] EMPIRE-X | PROTECT</strong> avec succès.</p>
+        {% endif %}
+        <div class="details">
+            <strong>{{ user.global_name or user.username }}</strong><br>
+            ID: {{ user.id }}
+        </div>
+        <a href="https://discord.com/channels/{{ '1513003332795498526' }}" class="btn" target="_blank">
+            📂 Voir le serveur
+        </a>
+        <br><br>
+        <a href="/logout" style="color: #555; font-size: 13px;">Se déconnecter</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions - [+] EMPIRE-X | PROTECT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0d0d15;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            background: #16162a;
+            border: 1px solid #2a2a4a;
+            border-radius: 20px;
+            padding: 48px;
+            max-width: 560px;
+            width: 90%;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #2a2a4a;
+        }
+        .user-info img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+        .user-info .name { font-weight: 600; font-size: 18px; }
+        .user-info .tag { color: #888; font-size: 14px; }
+        h1 { font-size: 24px; margin-bottom: 16px; }
+        .terms-box {
+            background: #1e1e38;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #bbb;
+        }
+        .terms-box h3 { color: #f0c050; margin: 12px 0 6px; }
+        .terms-box ul { padding-left: 20px; }
+        .terms-box li { margin-bottom: 6px; }
+        .btn-group { display: flex; gap: 12px; }
+        .btn-accept {
+            background: #f0c050;
+            color: #0d0d15;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            flex: 1;
+            text-align: center;
+        }
+        .btn-accept:hover { background: #d4a83a; }
+        .btn-decline {
+            background: transparent;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            flex: 1;
+            text-align: center;
+        }
+        .btn-decline:hover { background: #e74c3c22; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="user-info">
+            <img src="https://cdn.discordapp.com/avatars/{{ user.id }}/{{ user.avatar }}.png" alt="">
+            <div>
+                <div class="name">{{ user.global_name or user.username }}</div>
+                <div class="tag">@{{ user.username }}</div>
+            </div>
+        </div>
+        <h1>Conditions d'utilisation</h1>
+        <div class="terms-box">
+            <h3>🛡️ [+] EMPIRE-X | PROTECT</h3>
+            <p>En acceptant, tu rejoins automatiquement le serveur de protection et tu acceptes les conditions suivantes :</p>
+            <ul>
+                <li>Tu seras ajouté au serveur [+] EMPIRE-X | PROTECT</li>
+                <li>Tu pourras être soumis aux mesures de sécurité du bot</li>
+                <li>Le bot peut surveiller les messages, les photos et les comportements</li>
+                <li>Tu peux quitter le serveur à tout moment si tu ne souhaites plus être protégé</li>
+                <li>Les données collectées servent uniquement à la modération</li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <a href="/accept" class="btn-accept">✅ Accepter et rejoindre</a>
+            <a href="/logout" class="btn-decline">✗ Refuser</a>
+        </div>
+    </div>
+</body>
+</html>
