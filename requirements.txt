@@ -5,4 +5,4 @@ Augmentor
 Pillow
 flask>=3.0.0
 requests>=2.31.0
-git+https://github.com/dimitrismistriotis/alt-profanity-check@main
+git+https://github.com/dimitrismistriotis/alt-profanity-check@master
